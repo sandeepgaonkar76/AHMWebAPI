@@ -1,2 +1,16 @@
 sudo apt-get install git
 git clone https://github.com/sandeepgaonkar76/AHMWebAPI.git
+
+
+docker build -tag ahmwebapi:latest AHMWebAPI/Dockerfile .
+
+docker build -t gogo -f AHMWebAPI/Dockerfile .
+
+docker tag gogo gcr.io/emids-coe/ahmwebapi
+docker push gcr.io/emids-coe/ahmwebapi
+
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-418.0.0-linux-x86_64.tar.gz
+
+gcloud services enable containerregistry.googleapis.com
+
+gcloud auth configure-docker
