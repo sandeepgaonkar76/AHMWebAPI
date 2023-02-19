@@ -16,6 +16,7 @@ namespace SampleWebAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,6 +29,15 @@ namespace SampleWebAPI
         {
 
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://mymarathalagna.com", "https://www.mymarathalagna.com", "http://www.mymarathalagna.com", "http://mymarathalagna.com").AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                                  });
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleWebAPI", Version = "v1" });
