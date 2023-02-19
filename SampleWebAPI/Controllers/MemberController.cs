@@ -23,7 +23,7 @@ namespace SampleWebAPI.Controllers
             using (SqlConnection connection = new SqlConnection("Server=mysqldb.cw8nog6yjji6.us-east-1.rds.amazonaws.com;User ID=adminuser;Password=EmidsPassword123;Initial Catalog=maratha;pooling=true"))
             {
                 command.Connection = connection;
-                command.CommandText = "select top 10 firstname,lastname from member ";
+                command.CommandText = "select top 20 firstname,lastname from member ";
                 connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
