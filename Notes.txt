@@ -1,6 +1,8 @@
 sudo apt-get install git
 git clone https://github.com/sandeepgaonkar76/AHMWebAPI.git
 
+git pull https://github.com/sandeepgaonkar76/AHMWebAPI.git
+
 Install Docker
 sudo apt-get update
 
@@ -8,9 +10,10 @@ systemctl start docker
 
 docker build -tag ahmwebapi:latest AHMWebAPI/Dockerfile .
 
-docker build -t ahmwebapi -f AHMWebAPI/Dockerfile .
+docker build -t ahmwebapinew -f AHMWebAPI/Dockerfile .
+docker build -t ahmwebapinew -f SampleWebAPI/Dockerfile .
 
-docker tag gogo gcr.io/emids-coe/ahmwebapi
+docker tag ahmwebapinew gcr.io/emids-coe/ahmwebapi
 docker push gcr.io/emids-coe/ahmwebapi
 
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-418.0.0-linux-x86_64.tar.gz
