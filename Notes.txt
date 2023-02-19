@@ -1,10 +1,14 @@
 sudo apt-get install git
 git clone https://github.com/sandeepgaonkar76/AHMWebAPI.git
 
+Install Docker
+sudo apt-get update
+
+systemctl start docker
 
 docker build -tag ahmwebapi:latest AHMWebAPI/Dockerfile .
 
-docker build -t gogo -f AHMWebAPI/Dockerfile .
+docker build -t ahmwebapi -f AHMWebAPI/Dockerfile .
 
 docker tag gogo gcr.io/emids-coe/ahmwebapi
 docker push gcr.io/emids-coe/ahmwebapi
@@ -53,3 +57,18 @@ GKE Cluster
 https://medium.com/techbull/gke-cluster-with-gcloud-utility-for-dummies-5e42bf01b739
 
 gcloud container clusters create sample-cluster
+
+
+gcloud container clusters create ahmcluster --machine-type n1-standard-2 --num-nodes 2 --zone us-central1-c
+
+gcloud container clusters get-credentials ahmcluster --zone us-central1-c --project emids-coe
+
+kubectl create deployment ahmcluster  --image=gcr.io/emids-coe/ahmwebapi:latest
+
+kubectl get pods -o wide
+
+kubectl get deployment
+
+kubectl expose deployment ahmcluster  --type=LoadBalancer --port=8080
+
+kubectl get services --watch
