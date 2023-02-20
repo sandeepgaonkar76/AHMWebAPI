@@ -34,7 +34,7 @@ namespace SampleWebAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://mymarathalagna.com", "https://www.mymarathalagna.com", "http://www.mymarathalagna.com", "http://mymarathalagna.com").AllowAnyHeader()
+                                      builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://ahmreactapp-jcrxmdq5xq-uc.a.run.app").AllowAnyHeader()
                                                   .AllowAnyMethod();
                                   });
             });
