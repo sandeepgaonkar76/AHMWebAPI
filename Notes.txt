@@ -83,4 +83,4 @@ kubectl get services --watch
 
 
 ReactJS
-
+34.160.98.50.nip.io
