@@ -34,8 +34,9 @@ namespace SampleWebAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://ahmreactapp-jcrxmdq5xq-uc.a.run.app").AllowAnyHeader()
-                                                  .AllowAnyMethod();
+                                      builder.WithOrigins("AllowAll").AllowAnyHeader().AllowAnyMethod();
+                                      //builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://ahmreactapp-jcrxmdq5xq-uc.a.run.app").AllowAnyHeader()
+                                        //          .AllowAnyMethod();
                                   });
             });
             services.AddSwaggerGen(c =>
@@ -72,7 +73,8 @@ namespace SampleWebAPI
             {
                 endpoints.MapControllers();
             });
-            app.UseCors(options => options.WithOrigins("http://localhost:3000"));
+            //app.UseCors(options => options.WithOrigins("http://localhost:3000"));
+            app.UseCors(options => options.WithOrigins("AllowAll"));
             app.UseCors(builder =>
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
