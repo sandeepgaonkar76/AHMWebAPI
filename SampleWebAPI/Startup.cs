@@ -34,7 +34,7 @@ namespace SampleWebAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("AllowAll").AllowAnyHeader().AllowAnyMethod();
+                                      builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
                                       //builder.WithOrigins("http://demoadminsite.s3-website.ap-south-1.amazonaws.com", "http://localhost:3000", "https://ahmreactapp-jcrxmdq5xq-uc.a.run.app").AllowAnyHeader()
                                         //          .AllowAnyMethod();
                                   });
@@ -74,7 +74,7 @@ namespace SampleWebAPI
                 endpoints.MapControllers();
             });
             //app.UseCors(options => options.WithOrigins("http://localhost:3000"));
-            app.UseCors(options => options.WithOrigins("AllowAll"));
+            app.UseCors(options => options.WithOrigins("*"));
             app.UseCors(builder =>
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
