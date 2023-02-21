@@ -20,7 +20,7 @@ namespace SampleWebAPI.Controllers
             var people = new List<Member>();
             SqlCommand command = new SqlCommand(query);
 
-            using (SqlConnection connection = new SqlConnection("Server=mysqldb.cw8nog6yjji6.us-east-1.rds.amazonaws.com;User ID=adminuser;Password=EmidsPassword123;Initial Catalog=maratha;pooling=true"))
+            using (SqlConnection connection = new SqlConnection(""))
             {
                 command.Connection = connection;
                 command.CommandText = "select top 5 firstname,lastname from member ";
